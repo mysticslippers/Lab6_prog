@@ -1,0 +1,3 @@
+
+info
+execute_script C:\Users\ARKoli\IdeaProjects\Lab5_prog\abc.txt
