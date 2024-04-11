@@ -1,6 +1,6 @@
-package me.ifmo;
+package me.ifmo.server;
 
-public class Main {
+public class ServerApp {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }

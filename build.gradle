@@ -1,19 +1,67 @@
 plugins {
-    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
-group = 'me.ifmo'
-version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'application'
+    repositories {
+        mavenCentral()
+    }
 }
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.9.1')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+project(':client'){
+    mainClassName = 'me.ifmo.client.ClientApp'
+    dependencies {
+        implementation project(':common')
+    }
+    jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        manifest {
+            attributes(
+                    'Main-Class': 'me.ifmo.client.ClientApp'
+            )
+        }
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Javadoc).configureEach {
+        options.encoding = 'UTF-8'
+    }
 }
 
-test {
-    useJUnitPlatform()
+project(':server') {
+    mainClassName = 'me.ifmo.server.ServerApp'
+    dependencies {
+        implementation project(':common')
+        implementation 'org.apache.commons:commons-csv:1.10.0'
+        implementation 'xml-apis:xml-apis:1.4.01'
+        implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    }
+    jar {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        manifest {
+            attributes 'Main-Class': 'me.ifmo.server.ServerApp'
+        }
+
+        from {
+            configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+    compileJava {
+        options.encoding = 'UTF-8'
+    }
+    compileTestJava {
+        options.encoding = 'UTF-8'
+    }
+    tasks.withType(Javadoc).configureEach {
+        options.encoding = 'UTF-8'
+    }
 }
