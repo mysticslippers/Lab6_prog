@@ -1,5 +1,6 @@
 package me.ifmo.common.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -7,7 +8,7 @@ import java.util.Objects;
  * The main class for representing collection objects.
  */
 
-public class Dragon{
+public class Dragon implements Serializable {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null

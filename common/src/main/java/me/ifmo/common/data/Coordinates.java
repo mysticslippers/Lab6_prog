@@ -1,12 +1,13 @@
 package me.ifmo.common.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Class to represent the Coordinates field.
  */
 
-public class Coordinates{
+public class Coordinates implements Serializable {
     private Long x; //Значение поля должно быть больше -489, Поле не может быть null
     private float y; //Значение поля должно быть больше 0, Поле не может быть null
 

@@ -1,12 +1,13 @@
 package me.ifmo.common.data;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Class to represent the DragonCave field.
  */
 
-public class DragonCave{
+public class DragonCave implements Serializable {
     private Long numberOfTreasures; //Поле не может быть null, Значение поля должно быть больше 0
 
     /**
