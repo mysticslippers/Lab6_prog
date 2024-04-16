@@ -35,8 +35,8 @@ public class CommandManager{
     private final Command removeByIdCommand;
     private final Command removeByCharacterCommand;
     private final Command reorderCommand;
-    private final Command saveCommand;
     private final Command showCommand;
+    private final Command serverExitCommand;
     private final Command updateByIdCommand;
 
     /**
@@ -54,8 +54,8 @@ public class CommandManager{
      * @param removeByIdCommand - The remove_by_id id command.
      * @param removeByCharacterCommand - The remove_all_by_character character command.
      * @param reorderCommand - The reorder command.
-     * @param saveCommand - The save command.
      * @param showCommand - The show command.
+     * @param serverExitCommand - The server_exit command.
      * @param updateByIdCommand - The update_by_id id {element}.
      */
 
@@ -63,7 +63,7 @@ public class CommandManager{
                           Command clearCommand, Command executeScriptCommand, Command exitCommand, Command helpCommand,
                           Command historyCommand, Command infoCommand, Command printFieldDescendingCaveCommand,
                           Command removeByIdCommand, Command removeByCharacterCommand, Command reorderCommand,
-                          Command saveCommand, Command showCommand, Command updateByIdCommand){
+                          Command showCommand, Command serverExitCommand, Command updateByIdCommand){
         this.addCommand = addCommand;
         this.addIfMaxCommand = addIfMaxCommand;
         this.averageOfAgeCommand = averageOfAgeCommand;
@@ -77,8 +77,8 @@ public class CommandManager{
         this.removeByIdCommand = removeByIdCommand;
         this.removeByCharacterCommand = removeByCharacterCommand;
         this.reorderCommand = reorderCommand;
-        this.saveCommand = saveCommand;
         this.showCommand = showCommand;
+        this.serverExitCommand = serverExitCommand;
         this.updateByIdCommand = updateByIdCommand;
 
         putCommands();
@@ -102,8 +102,8 @@ public class CommandManager{
         commands.put("remove_by_id", removeByIdCommand);
         commands.put("remove_all_by_character", removeByCharacterCommand);
         commands.put("reorder", reorderCommand);
-        commands.put("save", saveCommand);
         commands.put("show", showCommand);
+        commands.put("server_exit", serverExitCommand);
         commands.put("update_by_id", updateByIdCommand);
     }
 
@@ -145,8 +145,8 @@ public class CommandManager{
             }
             fileWriter.flush();
         }catch(IOException exception){
-            System.out.println("----------------------");
-            System.out.println("Please do not delete the file!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Please do not delete the file!");
         }
     }
 
@@ -156,7 +156,7 @@ public class CommandManager{
 
     public void helpCommand(){
         for(Command command : this.commands.values()){
-            System.out.println(command.getName() + ": " + command.getDescription());
+            ResponseBodyFormatter.addResponseText(command.getName() + ": " + command.getDescription());
         }
     }
 
@@ -166,83 +166,7 @@ public class CommandManager{
 
     public void historyOfCommands(){
         for(String command : getHistoryOfCommands()){
-            System.out.println(command);
-        }
-    }
-
-    /**
-     * Method for executing the execute_script command.
-     * @param filePath - The path to the file.
-     */
-
-    public void executeScriptCommand(String filePath){
-        Path pathOfFile = Path.of(filePath);
-        String[] inputCommand;
-        String nameOfCommand, argumentOfCommand;
-        CommandType typeOfCommand;
-        Dragon dragon = null;
-        int idCounter = 0;
-        try(Scanner scriptScanner = new Scanner(new File(pathOfFile.toString()))){
-            String fileName = pathOfFile.getFileName().toString();
-            if(this.namesOfScripts.contains(fileName)) throw new ExecutingScriptException();
-            this.namesOfScripts.add(fileName);
-            DragonMaker.setConsoleMode(false);
-            DragonMaker.setConsoleScanner(scriptScanner);
-
-            while(scriptScanner.hasNextLine()) {
-                try {
-                    inputCommand = UserInputManager.tokenizeArguments(scriptScanner);
-                    nameOfCommand = inputCommand[0];
-                    argumentOfCommand = inputCommand[1];
-                    typeOfCommand = UserInputManager.isInputCommandValid(nameOfCommand, argumentOfCommand);
-
-                    if (typeOfCommand == CommandType.NOT_VALID) throw new NoSuchCommandException();
-                    Command userCommand = getCommands().get(nameOfCommand);
-                    switch (typeOfCommand) {
-                        case VALID -> {
-                            if (userCommand.hasValidArgument(argumentOfCommand, dragon)) {
-                                switch (nameOfCommand) {
-                                    case "help" -> {
-                                        userCommand.execute();
-                                        helpCommand();
-                                    }
-                                    case "history" -> {
-                                        userCommand.execute();
-                                        historyOfCommands();
-                                    }
-                                    default -> userCommand.execute();
-                                }
-                            }
-                        }
-                        case TRANSMITTING -> {
-                            idCounter += nameOfCommand.hashCode() / 12;
-                            dragon = (nameOfCommand.contains("add")) ? DragonMaker.getDragon(idCounter) : DragonMaker.updateDragon();
-                            if (userCommand.hasValidArgument(argumentOfCommand, dragon)) {
-                                userCommand.execute();
-                            }
-                        }
-                        case SCRIPT -> {
-                            userCommand.execute();
-                            executeScriptCommand(argumentOfCommand);
-                        }
-                    }
-                    addToHistoryOfCommands(nameOfCommand);
-                    saveHistoryOfCommands();
-                }catch(NoSuchCommandException exception){
-                    System.out.println("----------------------");
-                    System.out.println("There is no such command!");
-                }
-            }
-        }catch(ExecutingScriptException exception){
-            System.out.println("----------------------");
-            System.out.println("The file with the script has already been executed before!");
-        }catch(IOException exception){
-            System.out.println("----------------------");
-            System.out.println("The file cannot be read or is missing!");
-        }catch(NoSuchElementException exception){
-            System.out.println("----------------------");
-            System.out.println("Script file is empty!");
-            System.out.println("Maybe you have reached the end of the script execution.");
+            ResponseBodyFormatter.addResponseText(command);
         }
     }
 }
