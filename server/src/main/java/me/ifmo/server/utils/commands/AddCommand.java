@@ -3,6 +3,7 @@ package me.ifmo.server.utils.commands;
 import me.ifmo.common.data.Dragon;
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * The class that implements the add {element} command.
@@ -36,9 +37,9 @@ public class AddCommand extends BaseCommand{
             if(!argument.isEmpty() || receivedDragon == null) throw new WrongArgumentException();
             this.receivedDragon = (Dragon) receivedDragon;
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does not contain an argument!");
-            System.out.println("This command does contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does not contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does contain an object!");
             valid = false;
         }
         return valid;
@@ -51,8 +52,8 @@ public class AddCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("Object added!");
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("Object added!");
         this.collectionManager.addToCollection(this.receivedDragon);
         return true;
     }

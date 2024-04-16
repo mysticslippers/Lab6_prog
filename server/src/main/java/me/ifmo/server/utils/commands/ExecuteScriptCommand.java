@@ -1,6 +1,7 @@
 package me.ifmo.server.utils.commands;
 
 import me.ifmo.common.exceptions.WrongArgumentException;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * A class that implements the execute_script file_name command.
@@ -30,9 +31,9 @@ public class ExecuteScriptCommand extends BaseCommand{
         try{
             if(argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does contain an argument!");
-            System.out.println("This command does not contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does not contain an object!");
             valid = false;
         }
         return valid;
@@ -45,7 +46,7 @@ public class ExecuteScriptCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("Executing script...");
+        ResponseBodyFormatter.addResponseText("Executing script...");
         return true;
     }
 }

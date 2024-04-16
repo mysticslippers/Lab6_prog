@@ -2,6 +2,7 @@ package me.ifmo.server.utils.commands;
 
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * The class that implements the reorder command.
@@ -33,13 +34,13 @@ public class ReorderCommand extends BaseCommand{
         try {
             if (!argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does not contain an argument!");
-            System.out.println("This command does contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does not contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does contain an object!");
             valid = false;
         }catch(IllegalArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("Please enter a non-empty value!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Please enter a non-empty value!");
             valid = false;
         }
         return valid;
@@ -52,8 +53,8 @@ public class ReorderCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("The collection is sorted in reverse order.");
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("The collection is sorted in reverse order.");
         this.collectionManager.resortByCave();
         return true;
     }

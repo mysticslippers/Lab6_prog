@@ -3,6 +3,7 @@ package me.ifmo.server.utils.commands;
 import me.ifmo.common.exceptions.CollectionNotRecognizedException;
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * A class that implements the average_of_age command.
@@ -33,15 +34,15 @@ public class AverageOfAgeCommand extends BaseCommand{
         boolean valid = true;
         try{
             if(!argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
-            if(collectionManager.getCollection().size() == 0) throw new CollectionNotRecognizedException();
+            if(this.collectionManager.getCollection().isEmpty()) throw new CollectionNotRecognizedException();
         }catch(WrongArgumentException exception){
             System.out.println("----------------------");
-            System.out.println("This command does not contain an argument!");
-            System.out.println("This command does not contain an object!");
+            ResponseBodyFormatter.addResponseText("This command does not contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does not contain an object!");
             valid = false;
         }catch(CollectionNotRecognizedException exception){
-            System.out.println("----------------------");
-            System.out.println("The collection is empty!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("The collection is empty!");
             valid = false;
         }
         return valid;
@@ -54,8 +55,8 @@ public class AverageOfAgeCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("Here is the average price: ");
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("Here is the average price: ");
         this.collectionManager.averageOfAge();
         return true;
     }

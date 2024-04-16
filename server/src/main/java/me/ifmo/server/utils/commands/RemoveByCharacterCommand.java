@@ -5,6 +5,7 @@ import me.ifmo.common.exceptions.CollectionNotRecognizedException;
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.common.utils.UserInputManager;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 
 /**
@@ -37,20 +38,20 @@ public class RemoveByCharacterCommand extends BaseCommand{
         boolean valid = true;
         try{
             if(argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
-            if(collectionManager.getCollection().size() == 0) throw new CollectionNotRecognizedException();
+            if(this.collectionManager.getCollection().isEmpty()) throw new CollectionNotRecognizedException();
             if(!UserInputManager.isDragonCharacterValid(argument)) valid = false;
             this.character = DragonCharacter.valueOf(argument);
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does contain an argument!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does contain an argument!");
             valid = false;
         }catch(CollectionNotRecognizedException exception){
-            System.out.println("----------------------");
-            System.out.println("We cannot access the collection object. The collection is empty!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("We cannot access the collection object. The collection is empty!");
             valid = false;
         }catch(IllegalArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("Please enter a non-empty value!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Please enter a non-empty value!");
             valid = false;
         }
         return valid;
@@ -63,8 +64,8 @@ public class RemoveByCharacterCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("The objects have been deleted!");
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("The objects have been deleted!");
         this.collectionManager.removeByCharacter(this.character);
         return true;
     }

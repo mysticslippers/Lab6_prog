@@ -4,6 +4,7 @@ import me.ifmo.common.data.Dragon;
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.common.utils.UserInputManager;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * The class that implements the add_if_max {element} command.
@@ -40,13 +41,13 @@ public class AddIfMaxCommand extends BaseCommand{
             this.numberOfTreasures = Long.parseLong(argument);
             this.receivedDragon = (Dragon) receivedDragon;
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does contain an argument!");
-            System.out.println("This command does contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does contain an object!");
             valid = false;
         }catch(IllegalArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("Please enter a non-empty value!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Please enter a non-empty value!");
             valid = false;
         }
         return valid;

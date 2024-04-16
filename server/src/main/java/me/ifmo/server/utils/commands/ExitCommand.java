@@ -1,6 +1,7 @@
 package me.ifmo.server.utils.commands;
 
 import me.ifmo.common.exceptions.WrongArgumentException;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * The class that implements the exit command.
@@ -29,9 +30,9 @@ public class ExitCommand extends BaseCommand{
         try{
             if(!argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does not contain an argument!");
-            System.out.println("This command does not contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does not contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does not contain an object!");
             valid = false;
         }
         return valid;
@@ -44,9 +45,8 @@ public class ExitCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("Completion of the program...");
-        System.exit(0);
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("Completion of the program...");
         return true;
     }
 }

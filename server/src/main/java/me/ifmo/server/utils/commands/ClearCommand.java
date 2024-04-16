@@ -2,6 +2,7 @@ package me.ifmo.server.utils.commands;
 
 import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.server.utils.CollectionManager;
+import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
  * The class that implements the clear command.
@@ -33,9 +34,9 @@ public class ClearCommand extends BaseCommand{
         try{
             if(!argument.isEmpty() || receivedDragon != null) throw new WrongArgumentException();
         }catch(WrongArgumentException exception){
-            System.out.println("----------------------");
-            System.out.println("This command does not contain an argument!");
-            System.out.println("This command does not contain an object!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("This command does not contain an argument!");
+            ResponseBodyFormatter.addResponseText("This command does not contain an object!");
             valid = false;
         }
         return valid;
@@ -48,8 +49,8 @@ public class ClearCommand extends BaseCommand{
 
     @Override
     public boolean execute(){
-        System.out.println("----------------------");
-        System.out.println("Collection cleared!");
+        ResponseBodyFormatter.addResponseText("----------------------");
+        ResponseBodyFormatter.addResponseText("Collection cleared!");
         this.collectionManager.clearCollection();
         return true;
     }

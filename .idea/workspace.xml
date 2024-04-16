@@ -4,11 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eafe25ff-234b-4da1-9770-7d5938eaaf84" name="Changes" comment="Lab5 content + overridden methods hashcode and equals">
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/me/ifmo/common/interaction/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/me/ifmo/common/interaction/Response.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/src/main/java/me/ifmo/common/interaction/ResponseCode.java" afterDir="false" />
+    <list default="true" id="eafe25ff-234b-4da1-9770-7d5938eaaf84" name="Changes" comment="add ResponseBodyFormatter">
+      <change afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ServerExitCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AddCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AddCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AddIfMaxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AddIfMaxCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AverageOfAgeCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/AverageOfAgeCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ClearCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ClearCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ExecuteScriptCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ExecuteScriptCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ExitCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ExitCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/HelpCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/HelpCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/HistoryCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/HistoryCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/InfoCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/PrintFieldDescendingCaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/PrintFieldDescendingCaveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/RemoveByCharacterCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/RemoveByCharacterCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/RemoveByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/RemoveByIdCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ReorderCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ReorderCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/SaveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ShowCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/ShowCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/UpdateByIdCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/me/ifmo/server/utils/commands/UpdateByIdCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +69,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -83,12 +97,13 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ARKoli/IdeaProjects/Lab6_prog/server/src/main/java/me/ifmo/utils&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ARKoli/IdeaProjects/Lab6_prog&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -142,7 +157,11 @@
       <workItem from="1712816444980" duration="435000" />
       <workItem from="1712822003486" duration="1770000" />
       <workItem from="1712825426010" duration="27000" />
-      <workItem from="1712825475081" duration="7281000" />
+      <workItem from="1712825475081" duration="7748000" />
+      <workItem from="1713175395064" duration="1350000" />
+      <workItem from="1713189031329" duration="989000" />
+      <workItem from="1713267887043" duration="15000" />
+      <workItem from="1713267927202" duration="3126000" />
     </task>
     <task id="LOCAL-00001" summary="Lab5 content + overridden methods hashcode and equals">
       <option name="closed" value="true" />
@@ -152,7 +171,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712826805367</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="objects for interaction">
+      <option name="closed" value="true" />
+      <created>1712834707210</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712834707210</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add ResponseBodyFormatter">
+      <option name="closed" value="true" />
+      <created>1713276390795</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713276390796</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +196,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Lab5 content + overridden methods hashcode and equals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab5 content + overridden methods hashcode and equals" />
+    <MESSAGE value="objects for interaction" />
+    <MESSAGE value="add ResponseBodyFormatter" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ResponseBodyFormatter" />
   </component>
 </project>

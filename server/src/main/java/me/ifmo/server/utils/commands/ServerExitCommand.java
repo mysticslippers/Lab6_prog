@@ -4,17 +4,17 @@ import me.ifmo.common.exceptions.WrongArgumentException;
 import me.ifmo.server.utils.ResponseBodyFormatter;
 
 /**
- * The class that implements the history command.
+ * The class that implements the server_exit command.
  */
 
-public class HistoryCommand extends BaseCommand{
+public class ServerExitCommand extends BaseCommand{
 
     /**
-     * history command constructor.
+     * The server_exit command constructor.
      */
 
-    public HistoryCommand(){
-        super("history", "выводит список последних используемых команд");
+    public ServerExitCommand(){
+        super("server_exit", "завершить работу серверного приложения");
     }
 
     /**
@@ -39,14 +39,14 @@ public class HistoryCommand extends BaseCommand{
     }
 
     /**
-     * The method that executes the history command.
+     * The method that executes the server_exit command.
      * @return Returns true if the command completed successfully.
      */
 
     @Override
     public boolean execute(){
         ResponseBodyFormatter.addResponseText("----------------------");
-        ResponseBodyFormatter.addResponseText("Used the following commands: ");
+        ResponseBodyFormatter.addResponseText("The server is shutting down...");
         return true;
     }
 }

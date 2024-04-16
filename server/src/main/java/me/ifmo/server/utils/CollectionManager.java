@@ -76,8 +76,8 @@ public class CollectionManager{
             this.collection.add(dragon);
             sortByCave();
         }catch(NullPointerException exception){
-            System.out.println("----------------------");
-            System.out.println("Object not recognized!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Object not recognized!");
         }
     }
 
@@ -92,12 +92,12 @@ public class CollectionManager{
         Dragon maxDragon = this.collection.stream().max(comparatorDescending).orElse(null);
         long numberOfTreasuresMaxDragon = (maxDragon != null) ? maxDragon.getCave().getNumberOfTreasures() : 0;
         if(execute.addIfMax(numberOfTreasures, numberOfTreasuresMaxDragon)){
-            System.out.println("----------------------");
-            System.out.println("Object added!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Object added!");
             addToCollection(dragon);
         } else {
-            System.out.println("----------------------");
-            System.out.println("Object didn't added!");
+            ResponseBodyFormatter.addResponseText("----------------------");
+            ResponseBodyFormatter.addResponseText("Object didn't added!");
         }
     }
 
@@ -111,7 +111,7 @@ public class CollectionManager{
             return summa;
         };
         this.collection.stream().forEach(dragon -> avgAge = execute.sumAge(avgAge, dragon.getAge()));
-        System.out.println(avgAge / this.collection.stream().count());
+        ResponseBodyFormatter.addResponseText(String.valueOf(avgAge / this.collection.stream().count()));
     }
 
     /**
@@ -137,10 +137,10 @@ public class CollectionManager{
      */
 
     public void info(){
-        System.out.println("Collection type: " + Dragon.class.getName());
-        System.out.println("Time of initialization: " + getTimeOfInitialization());
-        System.out.println("Size of collection: " + (this.collection.stream().count()));
-        System.out.println("Time of conservation: " + getTimeOfConservation());
+        ResponseBodyFormatter.addResponseText("Collection type: " + Dragon.class.getName());
+        ResponseBodyFormatter.addResponseText("Time of initialization: " + getTimeOfInitialization());
+        ResponseBodyFormatter.addResponseText("Size of collection: " + (this.collection.stream().count()));
+        ResponseBodyFormatter.addResponseText("Time of conservation: " + getTimeOfConservation());
     }
 
     /**
@@ -218,7 +218,7 @@ public class CollectionManager{
      */
 
     public void show(){
-        System.out.println(this.collection.stream().reduce("", (dragon1, dragon2) -> dragon1 + (dragon2 + "\n\n"), (current, next) -> current + next).trim());
+        ResponseBodyFormatter.addResponseText(this.collection.stream().reduce("", (dragon1, dragon2) -> dragon1 + (dragon2 + "\n\n"), (current, next) -> current + next).trim());
     }
 
     /**
