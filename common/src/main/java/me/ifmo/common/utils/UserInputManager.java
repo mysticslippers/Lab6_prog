@@ -74,7 +74,7 @@ public class UserInputManager {
                 if(argumentOfCommand.isEmpty()) return CommandType.NOT_VALID;
                 return CommandType.TRANSMITTING;
             }
-            case "average_of_age", "clear", "exit", "help", "history", "info", "print_field_descending_cave", "show", "reorder", "save" -> {
+            case "average_of_age", "clear", "exit", "help", "history", "info", "print_field_descending_cave", "show", "reorder" -> {
                 if(!argumentOfCommand.isEmpty()) return CommandType.NOT_VALID;
             }
             case "remove_by_id", "remove_all_by_character" -> {

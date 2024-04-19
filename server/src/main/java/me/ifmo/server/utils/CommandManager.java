@@ -1,18 +1,12 @@
 package me.ifmo.server.utils;
 
-import me.ifmo.common.command.CommandType;
-import me.ifmo.common.data.Dragon;
-import me.ifmo.common.exceptions.ExecutingScriptException;
-import me.ifmo.common.exceptions.NoSuchCommandException;
-import me.ifmo.common.utils.DragonMaker;
-import me.ifmo.common.utils.UserInputManager;
-import me.ifmo.server.utils.commands.*;
+import me.ifmo.server.utils.commands.Command;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A class that implements the work of a command manager.
@@ -36,7 +30,6 @@ public class CommandManager{
     private final Command removeByCharacterCommand;
     private final Command reorderCommand;
     private final Command showCommand;
-    private final Command serverExitCommand;
     private final Command updateByIdCommand;
 
     /**
@@ -55,7 +48,6 @@ public class CommandManager{
      * @param removeByCharacterCommand - The remove_all_by_character character command.
      * @param reorderCommand - The reorder command.
      * @param showCommand - The show command.
-     * @param serverExitCommand - The server_exit command.
      * @param updateByIdCommand - The update_by_id id {element}.
      */
 
@@ -63,7 +55,7 @@ public class CommandManager{
                           Command clearCommand, Command executeScriptCommand, Command exitCommand, Command helpCommand,
                           Command historyCommand, Command infoCommand, Command printFieldDescendingCaveCommand,
                           Command removeByIdCommand, Command removeByCharacterCommand, Command reorderCommand,
-                          Command showCommand, Command serverExitCommand, Command updateByIdCommand){
+                          Command showCommand, Command updateByIdCommand){
         this.addCommand = addCommand;
         this.addIfMaxCommand = addIfMaxCommand;
         this.averageOfAgeCommand = averageOfAgeCommand;
@@ -78,7 +70,6 @@ public class CommandManager{
         this.removeByCharacterCommand = removeByCharacterCommand;
         this.reorderCommand = reorderCommand;
         this.showCommand = showCommand;
-        this.serverExitCommand = serverExitCommand;
         this.updateByIdCommand = updateByIdCommand;
 
         putCommands();
@@ -103,7 +94,6 @@ public class CommandManager{
         commands.put("remove_all_by_character", removeByCharacterCommand);
         commands.put("reorder", reorderCommand);
         commands.put("show", showCommand);
-        commands.put("server_exit", serverExitCommand);
         commands.put("update_by_id", updateByIdCommand);
     }
 

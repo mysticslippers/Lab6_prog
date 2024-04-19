@@ -28,12 +28,13 @@ public class CollectionManager{
      * @param collection - Current collection.
      */
 
-    public CollectionManager(LinkedHashSet<Dragon> collection){
-        this.collection = collection;
+    public CollectionManager(LinkedHashSet<? extends Dragon> collection){
+        this.collection = (LinkedHashSet<Dragon>) collection;
     }
 
     /**
      * Method to access our collection.
+     *
      * @return Returns our collection.
      */
 
