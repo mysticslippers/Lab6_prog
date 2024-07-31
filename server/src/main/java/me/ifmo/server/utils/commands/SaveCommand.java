@@ -1,6 +1,7 @@
 package me.ifmo.server.utils.commands;
 
 import me.ifmo.common.exceptions.WrongArgumentException;
+import me.ifmo.server.ServerApp;
 import me.ifmo.server.utils.CollectionManager;
 import me.ifmo.server.utils.ResponseBodyFormatter;
 
@@ -49,8 +50,7 @@ public class SaveCommand extends BaseCommand{
 
     @Override
     public boolean execute() {
-        ResponseBodyFormatter.addResponseText("----------------------");
-        ResponseBodyFormatter.addResponseText("Collection saved to file!");
+        ServerApp.logger.info("Collection saved to file!");
         this.collectionManager.saveCollectionToFile();
         return true;
     }
