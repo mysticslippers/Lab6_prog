@@ -29,7 +29,10 @@ public class RequestHandler {
             Command inputCommand = commands.get(nameOfCommand);
             if(inputCommand.hasValidArgument(argumentOfCommand, transmittedObject)){
                 inputCommand.execute();
+                if(nameOfCommand.equals("help")) this.commandManager.helpCommand();
+                if(nameOfCommand.equals("history")) this.commandManager.historyOfCommands();
                 if(nameOfCommand.equals("exit")) return ResponseCode.DISCONNECTED;
+                this.commandManager.addToHistoryOfCommands(nameOfCommand);
                 return ResponseCode.EXECUTED;
             } else {
                 return ResponseCode.ERROR;
