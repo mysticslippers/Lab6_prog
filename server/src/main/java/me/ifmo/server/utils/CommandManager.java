@@ -15,7 +15,6 @@ import java.util.Map;
 public class CommandManager{
     private final Map<String, Command> commands = new HashMap<>();
     private final ArrayList<String> historyOfCommands = new ArrayList<>();
-    private final ArrayList<String> namesOfScripts = new ArrayList<>();
     private final Command addCommand;
     private final Command addIfMaxCommand;
     private final Command averageOfAgeCommand;
@@ -29,6 +28,7 @@ public class CommandManager{
     private final Command removeByIdCommand;
     private final Command removeByCharacterCommand;
     private final Command reorderCommand;
+    private final Command saveCommand;
     private final Command showCommand;
     private final Command updateByIdCommand;
 
@@ -55,7 +55,7 @@ public class CommandManager{
                           Command clearCommand, Command executeScriptCommand, Command exitCommand, Command helpCommand,
                           Command historyCommand, Command infoCommand, Command printFieldDescendingCaveCommand,
                           Command removeByIdCommand, Command removeByCharacterCommand, Command reorderCommand,
-                          Command showCommand, Command updateByIdCommand){
+                          Command saveCommand, Command showCommand, Command updateByIdCommand){
         this.addCommand = addCommand;
         this.addIfMaxCommand = addIfMaxCommand;
         this.averageOfAgeCommand = averageOfAgeCommand;
@@ -69,6 +69,7 @@ public class CommandManager{
         this.removeByIdCommand = removeByIdCommand;
         this.removeByCharacterCommand = removeByCharacterCommand;
         this.reorderCommand = reorderCommand;
+        this.saveCommand = saveCommand;
         this.showCommand = showCommand;
         this.updateByIdCommand = updateByIdCommand;
 
@@ -93,6 +94,7 @@ public class CommandManager{
         commands.put("remove_by_id", removeByIdCommand);
         commands.put("remove_all_by_character", removeByCharacterCommand);
         commands.put("reorder", reorderCommand);
+        commands.put("save", saveCommand);
         commands.put("show", showCommand);
         commands.put("update_by_id", updateByIdCommand);
     }
