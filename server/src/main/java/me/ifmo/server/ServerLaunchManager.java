@@ -64,7 +64,7 @@ public class ServerLaunchManager {
             serverSocket.close();
             this.commandManager.saveHistoryOfCommands();
             this.commandManager.getCommands().get("save").execute();
-            ServerApp.logger.info("Server is shutted down successfully!");
+            ServerApp.logger.info("Server is shut down successfully!");
         }catch(NullServerSocketException exception){
             ServerApp.logger.error("Server socket not found! Try starting the server again!");
         }catch(IOException exception){
